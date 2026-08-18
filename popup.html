@@ -11,36 +11,65 @@
         }
 
         body {
-            width: 220px;
-            padding: 20px;
+            width: 260px;
             font-family: system-ui, sans-serif;
-            background: #1a1a2e;
-            color: #e0e0e0;
+            background: #0f0f1a;
+            color: #e2e2f0;
         }
 
-        h1 {
-            font-size: 13px;
-            font-weight: 600;
-            color: #a78bfa;
-            margin-bottom: 16px;
-            letter-spacing: 0.5px;
+        header {
+            padding: 16px 18px 14px;
+            border-bottom: 1px solid #1e1e3a;
         }
 
-        .row {
+        header h1 {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            color: #7c5cfc;
+        }
+
+        header p {
+            font-size: 11px;
+            color: #666;
+            margin-top: 2px;
+        }
+
+        main {
+            padding: 16px 18px;
             display: flex;
             align-items: center;
             justify-content: space-between;
+            gap: 12px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #444;
+            transition: background 0.3s;
+            flex-shrink: 0;
+        }
+
+        .status-dot.on {
+            background: #7c5cfc;
+            box-shadow: 0 0 6px #7c5cfc88;
         }
 
         #label {
-            font-size: 14px;
+            flex: 1;
+            font-size: 13px;
+            font-weight: 500;
         }
 
         /* Toggle switch */
         .switch {
             position: relative;
-            width: 44px;
-            height: 24px;
+            width: 46px;
+            height: 26px;
+            flex-shrink: 0;
         }
 
         .switch input {
@@ -52,10 +81,11 @@
         .slider {
             position: absolute;
             inset: 0;
-            background: #444;
-            border-radius: 24px;
+            background: #2a2a3e;
+            border: 1px solid #333;
+            border-radius: 26px;
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background 0.25s, border-color 0.25s;
         }
 
         .slider::before {
@@ -65,30 +95,44 @@
             height: 18px;
             left: 3px;
             top: 3px;
-            background: #fff;
+            background: #888;
             border-radius: 50%;
-            transition: transform 0.2s;
+            transition: transform 0.25s, background 0.25s;
         }
 
         input:checked+.slider {
-            background: #7c3aed;
+            background: #4a1fa8;
+            border-color: #7c5cfc;
         }
 
         input:checked+.slider::before {
             transform: translateX(20px);
+            background: #fff;
+        }
+
+        footer {
+            padding: 8px 18px 12px;
+            font-size: 10px;
+            color: #333;
+            border-top: 1px solid #1e1e3a;
         }
     </style>
 </head>
 
 <body>
-    <h1>Odoo Debug Labubu</h1>
-    <div class="row">
+    <header>
+        <h1>Odoo Debug</h1>
+        <p>dev.odoo.com &amp; localhost</p>
+    </header>
+    <main>
+        <span class="status-dot" id="dot"></span>
         <span id="label">Laden…</span>
         <label class="switch">
             <input type="checkbox" id="toggle">
             <span class="slider"></span>
         </label>
-    </div>
+    </main>
+    <footer>debug=&#x2665; only on dev &amp; local</footer>
     <script src="popup.js"></script>
 </body>
 
