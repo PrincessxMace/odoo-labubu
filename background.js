@@ -1,7 +1,6 @@
 function setIcon(enabled) {
-    browser.browserAction.setIcon({
-        path: enabled ? "svgs/on.svg" : "svgs/off.svg"
-    });
+    const icon = enabled ? "icon-on.svg" : "icon-off.svg";
+    browser.browserAction.setIcon({ path: { 32: icon, 64: icon } });
 }
 
 browser.storage.local.get({ enabled: true }).then(({ enabled }) => setIcon(enabled));

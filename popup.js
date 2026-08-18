@@ -31,7 +31,6 @@ function apply(enabled) {
     toggle.checked = enabled;
     label.textContent = enabled ? "Aktiv" : "Deaktiviert";
     dot.classList.toggle("on", enabled);
-    browser.browserAction.setIcon({
-        path: enabled ? "svgs/on.svg" : "svgs/off.svg"
-    });
+    const icon = enabled ? "icon-on.svg" : "icon-off.svg";
+    browser.browserAction.setIcon({ path: { 32: icon, 64: icon } });
 }

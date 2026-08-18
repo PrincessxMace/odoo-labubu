@@ -20,7 +20,10 @@
     "browser_action": {
         "default_popup": "popup.html",
         "default_title": "Odoo Debug",
-        "default_icon": "svgs/on.svg"
+        "default_icon": {
+            "32": "icon-on.svg",
+            "64": "icon-on.svg"
+        }
     },
     "content_scripts": [
         {
