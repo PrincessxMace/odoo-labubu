@@ -1,7 +1,7 @@
 const HINTS = {
     default: "Debug menu + technical fields.",
-    assets:  "Unminified JS/CSS — use for frontend debugging.",
-    tests:   "Loads QUnit test suites in the browser.",
+    assets: "Unminified JS/CSS — use for frontend debugging.",
+    tests: "Loads QUnit test suites in the browser.",
 };
 
 const toggle = document.getElementById("toggle");
