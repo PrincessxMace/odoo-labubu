@@ -12,9 +12,15 @@
     "permissions": [
         "storage"
     ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
     "browser_action": {
         "default_popup": "popup.html",
-        "default_title": "Odoo Debug Labubu"
+        "default_title": "Odoo Debug",
+        "default_icon": "unicorn-svgrepo-com-color.svg"
     },
     "content_scripts": [
         {

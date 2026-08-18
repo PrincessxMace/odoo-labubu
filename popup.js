@@ -16,4 +16,7 @@ function apply(enabled) {
     toggle.checked = enabled;
     label.textContent = enabled ? "Aktiv" : "Deaktiviert";
     dot.classList.toggle("on", enabled);
+    browser.browserAction.setIcon({
+        path: enabled ? "unicorn-svgrepo-com-color.svg" : "unicorn-svgrepo-com-black.svg"
+    });
 }
