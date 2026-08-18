@@ -1,6 +1,6 @@
 function setIcon(enabled) {
     browser.browserAction.setIcon({
-        path: enabled ? "unicorn-svgrepo-com-color.svg" : "unicorn-svgrepo-com-black.svg"
+        path: enabled ? "svgs/on.svg" : "svgs/off.svg"
     });
 }
 

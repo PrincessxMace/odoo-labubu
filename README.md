@@ -8,7 +8,7 @@ Firefox extension that automatically appends `debug=Labubu` to Odoo URLs on dev 
 Remove-Item -ErrorAction SilentlyContinue odoo-debug-labubu.zip, odoo-debug-labubu.xpi
 
 Compress-Archive `
-    -Path manifest.json,content.js,popup.html,popup.js,background.js,unicorn-svgrepo-com-color.svg,unicorn-svgrepo-com-black.svg `
+    -Path manifest.json,content.js,popup.html,popup.js,background.js,svgs `
     -DestinationPath odoo-debug-labubu.zip
 
 Rename-Item odoo-debug-labubu.zip odoo-debug-labubu.xpi
