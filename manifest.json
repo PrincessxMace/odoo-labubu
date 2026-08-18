@@ -9,6 +9,13 @@
             "strict_min_version": "57.0"
         }
     },
+    "permissions": [
+        "storage"
+    ],
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_title": "Odoo Debug Labubu"
+    },
     "content_scripts": [
         {
             "matches": [

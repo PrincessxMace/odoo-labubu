@@ -5,15 +5,12 @@
         url.hostname.endsWith(".dev.odoo.com") ||
         url.hostname === "localhost";
 
-    if (!isOdoo) {
-        return;
-    }
+    if (!isOdoo) return;
+    if (url.searchParams.get("debug") === "Labubu") return;
 
-    if (url.searchParams.get("debug") === "Labubu") {
-        return;
-    }
-
-    url.searchParams.set("debug", "Labubu");
-
-    window.location.replace(url.toString());
+    browser.storage.local.get({ enabled: true }).then(({ enabled }) => {
+        if (!enabled) return;
+        url.searchParams.set("debug", "Labubu");
+        window.location.replace(url.toString());
+    });
 })();
