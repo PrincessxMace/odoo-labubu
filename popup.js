@@ -25,6 +25,14 @@ toggle.addEventListener("change", () => {
 modeSelect.addEventListener("change", () => {
     browser.storage.local.set({ debugMode: modeSelect.value });
     hint.textContent = HINTS[modeSelect.value];
+    browser.tabs.query({ active: true, currentWindow: true }).then(([tab]) => {
+        if (!tab?.url) return;
+        const url = new URL(tab.url);
+        const isOdoo =
+            url.hostname.endsWith(".dev.odoo.com") ||
+            (url.hostname === "localhost" && url.pathname.startsWith("/odoo"));
+        if (isOdoo) browser.tabs.reload(tab.id);
+    });
 });
 
 function apply(enabled) {
