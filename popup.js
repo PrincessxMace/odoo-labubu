@@ -16,15 +16,7 @@ browser.storage.local.get({ enabled: true, debugMode: "default" }).then(({ enabl
     apply(enabled);
 });
 
-toggle.addEventListener("change", () => {
-    const enabled = toggle.checked;
-    browser.storage.local.set({ enabled });
-    apply(enabled);
-});
-
-modeSelect.addEventListener("change", () => {
-    browser.storage.local.set({ debugMode: modeSelect.value });
-    hint.textContent = HINTS[modeSelect.value];
+function reloadIfOdoo() {
     browser.tabs.query({ active: true, currentWindow: true }).then(([tab]) => {
         if (!tab?.url) return;
         const url = new URL(tab.url);
@@ -33,6 +25,19 @@ modeSelect.addEventListener("change", () => {
             (url.hostname === "localhost" && url.pathname.startsWith("/odoo"));
         if (isOdoo) browser.tabs.reload(tab.id);
     });
+}
+
+toggle.addEventListener("change", () => {
+    const enabled = toggle.checked;
+    browser.storage.local.set({ enabled });
+    apply(enabled);
+    reloadIfOdoo();
+});
+
+modeSelect.addEventListener("change", () => {
+    browser.storage.local.set({ debugMode: modeSelect.value });
+    hint.textContent = HINTS[modeSelect.value];
+    reloadIfOdoo();
 });
 
 function apply(enabled) {
