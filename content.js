@@ -3,14 +3,15 @@
 
     const isOdoo =
         url.hostname.endsWith(".dev.odoo.com") ||
-        url.hostname === "localhost";
+        (url.hostname === "localhost" && url.pathname.startsWith("/odoo"));
 
     if (!isOdoo) return;
-    if (url.searchParams.get("debug") === "Labubu") return;
 
-    browser.storage.local.get({ enabled: true }).then(({ enabled }) => {
+    browser.storage.local.get({ enabled: true, debugMode: "default" }).then(({ enabled, debugMode }) => {
         if (!enabled) return;
-        url.searchParams.set("debug", "Labubu");
+        const value = debugMode === "default" ? "Labubu" : debugMode;
+        if (url.searchParams.get("debug") === value) return;
+        url.searchParams.set("debug", value);
         window.location.replace(url.toString());
     });
 })();
