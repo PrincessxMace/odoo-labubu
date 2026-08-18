@@ -2,8 +2,8 @@
     const url = new URL(window.location.href);
 
     const isOdoo =
-        url.hostname.includes("odoo") ||
-        url.pathname.startsWith("/web");
+        url.hostname.endsWith(".dev.odoo.com") ||
+        url.hostname === "localhost";
 
     if (!isOdoo) {
         return;
